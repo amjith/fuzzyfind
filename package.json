@@ -1,0 +1,17 @@
+{
+  "name": "fuzzyfind",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test"
+  },
+  "author": "Amjith Ramanujam",
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "*"
+  }
+}
