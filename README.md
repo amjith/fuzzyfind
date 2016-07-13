@@ -21,7 +21,7 @@ console.log(fuzzy('djmi', collection))
 [ 'django_migrations.py', 'django_admin_log.py' ]
 ```
 
-If you want to pass in an array of anything other than a string you can als
+If you want to pass in an array of anything other than a string you can also
 provide an accessor function as the third argument. This must return a string.
 
 ```js
