@@ -1,11 +1,16 @@
 // fuzzysearch
-module.exports = function (input, collection) {
+module.exports = function (input, collection, accessor) {
   var suggestions = []
   var escInput = escapeRegExp(input)
   var pattern = escInput.split('').join('.*?')
   var regex = new RegExp(pattern)
+  if (!accessor) {
+    accessor = function(item) {
+      return item
+    }
+  }
   collection.forEach(function (item) {
-    var match = regex.exec(item)
+    var match = regex.exec(accessor(item))
     if (match) {
       suggestions.push({length: match[0].length, start: match.index, item: item})
     }
