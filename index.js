@@ -10,9 +10,10 @@ module.exports = function (input, collection, accessor) {
     }
   }
   collection.forEach(function (item) {
-    var match = regex.exec(accessor(item))
+    const searchableItem = accessor(item)
+    var match = regex.exec(searchableItem)
     if (match) {
-      suggestions.push({length: match[0].length, start: match.index, item: item})
+      suggestions.push({length: match[0].length, start: match.index, searchableItem: searchableItem, item: item})
     }
   })
 
@@ -29,10 +30,10 @@ module.exports = function (input, collection, accessor) {
     if (a.start < b.start) {
       return -1
     }
-    if (a.item > b.item) {
+    if (a.searchableItem > b.searchableItem) {
       return 1
     }
-    if (a.item < b.item) {
+    if (a.searchableItem < b.searchableItem) {
       return -1
     }
     return 0
