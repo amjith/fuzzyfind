@@ -3,7 +3,7 @@ module.exports = function (input, collection, accessor) {
   var suggestions = []
   var escInput = escapeRegExp(input)
   var pattern = escInput.split('').join('.*?')
-  var regex = new RegExp(pattern)
+  var regex = new RegExp(pattern, 'i')
   if (!accessor) {
     accessor = function(item) {
       return item

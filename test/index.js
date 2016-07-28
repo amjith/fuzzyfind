@@ -30,6 +30,11 @@ test('Fuzzy Match Ranking', function (t) {
   t.deepEqual(fuzzy('mi', collection), ['migrations.py', 'django_migrations.py', 'django_admin_log.py'])
 })
 
+test('Fuzzy Case-insensitive Match Ranking', function (t) {
+  t.plan(1)
+  t.deepEqual(fuzzy('MI', collection), ['migrations.py', 'django_migrations.py', 'django_admin_log.py'])
+})
+
 test('Uses Accessor', function (t) {
   t.plan(1)
   var objCollection = collection.map(function(name) {
