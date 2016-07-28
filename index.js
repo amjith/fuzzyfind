@@ -1,5 +1,8 @@
 // fuzzysearch
 module.exports = function (input, collection, accessor) {
+  if (typeof input !== 'string' || input === '') {
+    return collection
+  }
   var suggestions = []
   var escInput = escapeRegExp(input)
   var pattern = escInput.split('').join('.*?')
