@@ -6,7 +6,7 @@ FuzzySearch is a matching algorithm for filtering and ranking a list based on pa
 eg: 
 
 ```js
-var fuzzy = require('fuzzysearch')
+var fuzzy = require('fuzzyfind')
 var collection = [
     'migrations.py',
     'django_migrations.py',
@@ -25,7 +25,7 @@ If you want to pass in an array of anything other than a string you can also
 provide an accessor function as the third argument. This must return a string.
 
 ```js
-var fuzzy = require('fuzzysearch')
+var fuzzy = require('fuzzyfind')
 var collection = [
     { name: 'migrations.py', size: '12kb'},
     { name: 'django_migrations.py', size: '11kb'},
