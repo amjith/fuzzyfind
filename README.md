@@ -1,7 +1,7 @@
-FuzzySearch
+FuzzyFind
 ===========
 
-FuzzySearch is a matching algorithm for filtering and ranking a list based on partial user input. 
+FuzzyFind is a matching algorithm for filtering and ranking a list based on partial user input. 
 
 eg: 
 
