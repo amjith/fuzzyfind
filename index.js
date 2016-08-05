@@ -1,12 +1,10 @@
-// fuzzysearch
-module.exports = function (input, collection, accessor) {
+var search = require('./search')
+
+module.exports = function fuzzyfind (input, collection, accessor) {
   if (typeof input !== 'string' || input === '') {
     return collection
   }
   var suggestions = []
-  var escInput = escapeRegExp(input)
-  var pattern = escInput.split('').join('.*?')
-  var regex = new RegExp(pattern, 'i')
   if (!accessor) {
     accessor = function(item) {
       return item
@@ -14,9 +12,14 @@ module.exports = function (input, collection, accessor) {
   }
   collection.forEach(function (item) {
     const searchableItem = accessor(item)
-    var match = regex.exec(searchableItem)
-    if (match) {
-      suggestions.push({length: match[0].length, start: match.index, searchableItem: searchableItem, item: item})
+    var match = search(searchableItem).for(input)
+    if (match.found) {
+      suggestions.push({
+        length: match.end - match.start,
+        start: match.start,
+        searchableItem: searchableItem,
+        item: item
+      })
     }
   })
 
