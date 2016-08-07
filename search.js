@@ -1,18 +1,18 @@
 module.exports = function search (haystack) {
   haystack = haystack.toLowerCase()
   var self = {
-    for: (needle, fromIndex) => {
-      var foundStart = haystack.indexOf(needle[0].toLowerCase(), fromIndex || 0)
-      var notFound = foundStart === -1
-      var lastIteration = needle.length === 1
-      if (notFound) { return { found: false } }
-      if (lastIteration) {
-        return { found: true, start: foundStart, end: foundStart + 1 }
+    for: (needle) => {
+      var foundIndex = 0
+      var result = {found: true}
+      needle = needle.toLowerCase()
+      var needleLength = needle.length
+      for (var i = 0; i < needleLength; i++){
+        foundIndex = haystack.indexOf(needle[i], foundIndex)
+        if (foundIndex === -1) { return { found: false } }
+        if (i == 0) result.start = foundIndex
       }
-
-      var next = self.for(needle.slice(1), foundStart+1)
-      next.start = foundStart
-      return next
+      result.end = foundIndex + 1
+      return result
     }
   }
   return self
