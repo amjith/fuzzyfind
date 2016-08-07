@@ -1,9 +1,18 @@
-FuzzyFind
-===========
+## FuzzyFind
 
-FuzzyFind is a matching algorithm for filtering and ranking a list based on partial user input. 
+FuzzyFind is a matching algorithm for filtering and ranking a list based on
+partial user input.
 
-eg: 
+### API
+
+`array fuzzyfind ( string $query , array $collection [, object $options ])`
+
+#### All Options
+
+* `accessor` *function*: Function that transforms your items into strings.
+* `precision` *number*: How precise you want your search to be, between 0 and 1.
+
+### Usage
 
 ```js
 var fuzzy = require('fuzzyfind')
@@ -36,10 +45,39 @@ var collection = [
     { name: 'accounts.txt', size: '10kb'},
 ]
 
-console.log(fuzzy('djmi', collection, function(obj) {
+function accessorFn (obj) {
     return obj.name
-}))
+}
+console.log(fuzzy('djmi', collection, { accessor: accessorFn }))
 [ 'django_migrations.py', 'django_admin_log.py' ]
 ```
 
-The algorithm used is a direct translation from Python to JS from this blog: http://blog.amjith.com/fuzzyfinder-in-10-lines-of-python.
+Precision can also be defined in your search, if you want to be more inclusive
+in your results. The lower your precision the more matches you get, with a
+precision of 1 you want to match the full word, while a precision of 0 would be
+matching any letter in your query.
+
+The size of the match is taking into account, so having less precision would
+just be adding more results to the `end` of your results.
+
+To define precision:
+
+```js
+var fuzzy = require('fuzzyfind')
+var collection = [
+    'migrations.py',
+    'django_migrations.py',
+    'django_admin_log.py',
+    'api_user.doc',
+    'user_group.doc',
+    'users.txt',
+    'accounts.txt'
+]
+
+console.log(fuzzy('djmi', collection, { precision: 0.5 }))
+[ 'django_migrations.py', 'django_admin_log.py', 'migrations.py' ]
+```
+
+The algorithm was influenced by a blog post about [fuzzy finding][blog].
+
+[blog]: http://blog.amjith.com/fuzzyfinder-in-10-lines-of-python
