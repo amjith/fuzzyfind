@@ -8,12 +8,14 @@
   },
   "scripts": {
     "test": "node test",
-    "perf": "node perf"
+    "perf": "node perf",
+    "compile": "webpack"
   },
   "author": "Amjith Ramanujam",
   "license": "MIT",
   "devDependencies": {
-    "tape": "*"
+    "tape": "*",
+    "webpack": "^1.13.1"
   },
   "repository": {
     "type": "git",

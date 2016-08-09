@@ -1,7 +1,7 @@
 module.exports = function search (haystack) {
   haystack = haystack.toLowerCase()
   var self = {
-    for: (needle) => {
+    for: function (needle) {
       var foundIndex = 0
       var result = {found: true}
       needle = needle.toLowerCase()
