@@ -15,7 +15,7 @@ partial user input.
 ### Usage
 
 ```js
-var fuzzy = require('fuzzyfind')
+var fuzzyfind = require('fuzzyfind')
 var collection = [
     'migrations.py',
     'django_migrations.py',
@@ -26,7 +26,7 @@ var collection = [
     'accounts.txt'
 ]
 
-console.log(fuzzy('djmi', collection))
+console.log(fuzzyfind('djmi', collection))
 [ 'django_migrations.py', 'django_admin_log.py' ]
 ```
 
@@ -34,7 +34,7 @@ If you want to pass in an array of anything other than a string you can also
 provide an accessor function as the third argument. This must return a string.
 
 ```js
-var fuzzy = require('fuzzyfind')
+var fuzzyfind = require('fuzzyfind')
 var collection = [
     { name: 'migrations.py', size: '12kb'},
     { name: 'django_migrations.py', size: '11kb'},
@@ -48,7 +48,7 @@ var collection = [
 function accessorFn (obj) {
     return obj.name
 }
-console.log(fuzzy('djmi', collection, { accessor: accessorFn }))
+console.log(fuzzyfind('djmi', collection, { accessor: accessorFn }))
 [ 'django_migrations.py', 'django_admin_log.py' ]
 ```
 
@@ -63,7 +63,7 @@ just be adding more results to the `end` of your results.
 To define precision:
 
 ```js
-var fuzzy = require('fuzzyfind')
+var fuzzyfind = require('fuzzyfind')
 var collection = [
     'migrations.py',
     'django_migrations.py',
@@ -74,7 +74,7 @@ var collection = [
     'accounts.txt'
 ]
 
-console.log(fuzzy('djmi', collection, { precision: 0.5 }))
+console.log(fuzzyfind('djmi', collection, { precision: 0.5 }))
 [ 'django_migrations.py', 'django_admin_log.py', 'migrations.py' ]
 ```
 
