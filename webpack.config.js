@@ -4,7 +4,9 @@ module.exports = {
   entry: './index.js',
   output: {
     path: __dirname,
-    filename: 'fuzzyfind.min.js'
+    filename: 'fuzzyfind.min.js',
+    libraryTarget: 'var',
+    library: 'fuzzyfind',
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
