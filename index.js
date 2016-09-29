@@ -28,24 +28,15 @@ module.exports = function fuzzyfind (input, collection, options) {
     })
   })
 
-  suggestions.sort(function (a, b) {
-    if (a.gram.length > b.gram.length) {
-      return -1
+  return suggestions.sort(function (a, b) {
+    if (a.gram.length !== b.gram.length) {
+      return b.gram.length - a.gram.length
     }
-    if (a.gram.length < b.gram.length) {
-      return 1
+    if (a.length !== b.length) {
+      return a.length - b.length
     }
-    if (a.length > b.length) {
-      return 1
-    }
-    if (a.length < b.length) {
-      return -1
-    }
-    if (a.start > b.start) {
-      return 1
-    }
-    if (a.start < b.start) {
-      return -1
+    if (a.start !== b.start) {
+      return a.start - b.start
     }
     if (a.searchableItem > b.searchableItem) {
       return 1
@@ -54,9 +45,7 @@ module.exports = function fuzzyfind (input, collection, options) {
       return -1
     }
     return 0
-  })
-
-  return suggestions.map(function (item) {
+  }).map(function (item) {
     return item.item
   })
 }
