@@ -11,9 +11,7 @@
     "perf": "node perf",
     "compile": "webpack"
   },
-  {
-    "types": "types/index.d.ts"
-  },
+  "types": "types/index.d.ts",
   "author": "Amjith Ramanujam",
   "license": "MIT",
   "devDependencies": {
