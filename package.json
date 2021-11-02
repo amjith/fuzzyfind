@@ -11,10 +11,11 @@
     "perf": "node perf",
     "compile": "webpack"
   },
+  "types": "types/index.d.ts",
   "author": "Amjith Ramanujam",
   "license": "MIT",
   "devDependencies": {
-    "tape": "*",
+      "tape": "*",
     "webpack": "^1.13.1"
   },
   "repository": {
