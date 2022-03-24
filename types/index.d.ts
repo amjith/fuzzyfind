@@ -1,4 +1,4 @@
-export = fuzzyfind
+export default fuzzyfind
 type Options = {
   accessor?: (a: any) => string
   precision?: number
